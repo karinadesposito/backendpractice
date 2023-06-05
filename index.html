@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="./index.js" type="module"></script>  
+    <link rel = "stylesheet" href="styles.css">
+    <title>Prueba de backend</title>
+</head>
+<body> 
+    <button id="open-modal">open modal</button>
+          <dialog id="modal">
+        <form action="" method="dialog" id="form">
+          <label for="name">Nombre Empresa
+            <input type="text" id="name" name="name" required>
+          </label>
+          <label for="email">Correo Electrónico
+            <input type="email" id="email" name="email" required>
+          </label>
+          <label for="phone">Teléfono
+            <input type="tel" id="phone" name="phone" placeholder="Formato: 011-1234-5678"required
+              pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}">
+          </label>
+          
+          <input type="submit" value="aceptar">
+          <input type="reset" value="limpiar">
+          <input type="button" value="cancelar" id="close-modal">
+        </form>
+      </dialog>
+      <table>
+        <thead>
+          <tr>
+            <th id = "title" colspan="4">Empresas Patrocinantes</th>          
+          </tr> 
+            <th>Nombre Compañía</th>
+            <th>e-mail</th>
+            <th>Phone</th>
+            <th>Id</th> 
+
+              
+        </thead>
+        <tbody id = "miTabla">
+          
+        </tbody>
+      </table>
+    
+</body>
+</html>
