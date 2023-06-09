@@ -1,6 +1,6 @@
 const form = document.getElementById("form");
   form.addEventListener("submit", handleSubmit);
-  function handleSubmit() {
+  function handleSubmit() {    
     const user = new FormData(form);
 
     console.log(user.get("name"));
@@ -23,23 +23,18 @@ const getMockapi = () => {
   .then(data => {
     data.forEach(item => {
       const fila = document.createElement("tr");
-
       const nombre = document.createElement("td");
       nombre.textContent = item.name;
       fila.appendChild(nombre);
-
       const email = document.createElement("td");
       email.textContent = item.email;
       fila.appendChild(email);
-
       const phone = document.createElement("td");
       phone.textContent = item.phone;
       fila.appendChild(phone);
-
       const id = document.createElement("td");
       id.textContent = item.id;
       fila.appendChild(id);
-
       const acciones = document.createElement("td");
 
       const btnModificar = document.createElement("button");
@@ -50,12 +45,12 @@ const getMockapi = () => {
 
       function abrirFormConValores(data) { 
         modal.showModal();   
-        // Obtener los campos de entrada del formulario
+// traer los datos de la fila
         const nameField = document.getElementById("name");
         const emailField = document.getElementById("email");
         const phoneField = document.getElementById("phone");
 
-        // Establecer los valores en los campos de entrada
+      // Traer los valores de esos datos
          nameField.value = data.name;
          emailField.value = data.email;
          phoneField.value = data.phone;
@@ -65,6 +60,7 @@ const getMockapi = () => {
       editarEmpresa.name;
       editarEmpresa.email;
       editarEmpresa.phone;
+      
       });    
                            
       
@@ -115,16 +111,28 @@ const getMockapi = () => {
       .catch(err => console.error(err));
   }
 
-  function editarEmpresa(id,user) {
-    fetch(baseUrl + `/${id}`, {
+  function editarEmpresa(id,item) {
+    fetch(baseUrl + `/${id}`, {  
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(user),
+      body: JSON.stringify(item),
     })
-      .then(res => res.json())
-      .then(data => console.log(data))
-      .catch(err => console.error(err));
-  }};
- getMockapi();
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      // Actualizar los valores en el formulario
+      const nameField = document.getElementById("name");
+      const emailField = document.getElementById("email");
+      const phoneField = document.getElementById("phone");
 
-// deleteOne(baseUrl, 20);
+      nameField.value = data.name;
+      emailField.value = data.email;
+      phoneField.value = data.phone;
+    }) 
+    .catch(err => console.error(err));
+  }}
+     
+      
+  getMockapi();
+
+deleteOne(baseUrl, 20); 
