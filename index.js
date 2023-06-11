@@ -1,11 +1,4 @@
 const form = document.getElementById("form");
-
-
-
-
-
-
-
 let idSelect = null;
 let accion = "";
 function handleSubmit(event) {
@@ -35,6 +28,9 @@ agregarEmpresa.addEventListener("click", () => {
   accion = "add";
   modal.showModal();
 });
+
+const modal1 = document.getElementById("modalEliminar");
+const modal2Content
 const tabla = document.getElementById("miTabla");
 const baseUrl = "https://647a6fb6d2e5b6101db05b10.mockapi.io/listado";
 function getMockapi() {
@@ -73,7 +69,8 @@ function getMockapi() {
         btnEliminar.dataset.empresaId = item.id;
         acciones.appendChild(btnEliminar);
         btnEliminar.addEventListener("click", () => {
-          const id = btnEliminar.dataset.empresaId;          
+          const id = btnEliminar.dataset.empresaId; 
+     
           deleteOne(id);
         });
         fila.appendChild(acciones);
@@ -92,24 +89,13 @@ function abrirFormConValores(data) {
   phoneField.value = data.phone;
   modal.showModal();
 }
-// function getAll() {
-//   fetch(baseUrl)
-//     .then(response => response.json())
-//     .then(data => console.log(data))
-//     .catch(err => console.error(err));
-// }
-// function getOne(id) {
-//   fetch(baseUrl + `/${id}`)
-//     .then(response => response.json())
-//     .then(data => console.log(data))
-//     .catch(err => console.error(err));
-// }
+
 function deleteOne(id) {
   fetch(baseUrl + `/${id}`, {
     method: "DELETE",
   })
     .then((response) => response.json())
-    .then((data) => console.log(data))
+      .then((data) => console.log(data))
     .catch((err) => console.error(err));
 }
 function addOne(user) {

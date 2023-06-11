@@ -15,12 +15,15 @@
           >Nombre Empresa
           <input type="text" id="name" name="name" required />
         </label>
+        <br>
         <label for="email"
           >Correo Electrónico
           <input type="email" id="email" name="email" required />
         </label>
+        <br>
         <label for="phone"
           >Teléfono
+          <br>
           <input
             type="tel"
             id="phone"
@@ -40,7 +43,8 @@
       <thead>
         <tr>
           <th id="title" colspan="5">
-            Empresas Patrocinantes
+            Sponsors
+            <!-- <img src = "https://pixabay.com/es/photos/rascacielos-fachada-de-vidrio-418189/" class = "img"> -->
             <button id="agregarEmpresa">Agregar Empresa</button>
           </th>
         </tr>
@@ -52,5 +56,16 @@
       </thead>
       <tbody id="miTabla"></tbody>
     </table>
+    <section class="modal">
+      <div class="modal_container">
+      </div>
+    </section>
+    <div id="modalEliminar" class="modal">
+      <div class="modal-content">
+        <p>¿Estás seguro de que deseas eliminar el dato?</p>
+        <button id="confirmarEliminar">Aceptar</button>
+        <button id="cancelarEliminar">Cancelar</button>
+      </div>  
+
   </body>
 </html>
