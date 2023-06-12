@@ -9,28 +9,27 @@ function handleSubmit(event) {
     email: user.get("email"),
     phone: user.get("phone"),
   };
-  if (accion!= "" && accion =="add" )
-  addOne(newUser);
-  if (accion!= "" && accion =="modified")
-  editarEmpresa(idSelect, newUser);
- modal.close();
- accion = "";
+  if (accion != "" && accion == "add") addOne(newUser);
+  modal.close(); 
+  if (accion != "" && accion == "modified") editarEmpresa(idSelect, newUser);
+  alert("La empresa fue modificada con éxito");
+  modal.close();
+  accion = "";
   form.reset();
 }
 form.addEventListener("submit", handleSubmit);
 const agregarEmpresa = document.getElementById("agregarEmpresa");
 const modal = document.getElementById("modal");
 const closeModal = document.getElementById("close-modal");
-closeModal && closeModal.addEventListener("click", () => {
-  modal.close();
-});
+closeModal &&
+  closeModal.addEventListener("click", () => {
+    modal.close();
+  });
 agregarEmpresa.addEventListener("click", () => {
   accion = "add";
   modal.showModal();
 });
 
-const modal1 = document.getElementById("modalEliminar");
-const modal2Content
 const tabla = document.getElementById("miTabla");
 const baseUrl = "https://647a6fb6d2e5b6101db05b10.mockapi.io/listado";
 function getMockapi() {
@@ -58,7 +57,7 @@ function getMockapi() {
         btnModificar.classList.add("btnModificar");
         btnModificar.dataset.empresaId = item.id;
         acciones.appendChild(btnModificar);
-        btnModificar.addEventListener("click", () => {          
+        btnModificar.addEventListener("click", () => {
           idSelect = item.id;
           accion = "modified";
           abrirFormConValores(item);
@@ -69,8 +68,8 @@ function getMockapi() {
         btnEliminar.dataset.empresaId = item.id;
         acciones.appendChild(btnEliminar);
         btnEliminar.addEventListener("click", () => {
-          const id = btnEliminar.dataset.empresaId; 
-     
+          const id = btnEliminar.dataset.empresaId;
+          alert("¿Está seguro que desea eliminar este dato?");
           deleteOne(id);
         });
         fila.appendChild(acciones);
@@ -79,7 +78,6 @@ function getMockapi() {
     });
 }
 function abrirFormConValores(data) {
-
   const nameField = document.getElementById("name");
   const emailField = document.getElementById("email");
   const phoneField = document.getElementById("phone");
@@ -95,7 +93,7 @@ function deleteOne(id) {
     method: "DELETE",
   })
     .then((response) => response.json())
-      .then((data) => console.log(data))
+    .then((data) => console.log(data))
     .catch((err) => console.error(err));
 }
 function addOne(user) {
@@ -116,9 +114,8 @@ function editarEmpresa(id, item) {
   })
     .then((response) => response.json())
     .then((data) => {
-      const tr = document.querySelector(`tr[data-empresa-id = '${id}']`)
+      const tr = document.querySelector(`tr[data-empresa-id = '${id}']`);
       console.log("responseEditar", data);
-     
     })
     .catch((err) => console.error(err));
 }
